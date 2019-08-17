@@ -13,13 +13,13 @@ function Header() {
             <div className="nav--features">
                 <ul className="nav--features--feature">
                     <li>
-                        <div><a href="">Button1</a></div>
+                        <div><a href="#">Button1</a></div>
                     </li>
                     <li>
-                        <div><a href="">Button2</a></div>
+                        <div><a href="#">Button2</a></div>
                     </li>
                     <li>
-                        <div><a href="">Button3</a></div>
+                        <div><a href="#">Button3</a></div>
                     </li>
                 </ul>
             </div>

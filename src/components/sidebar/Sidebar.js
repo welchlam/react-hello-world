@@ -9,16 +9,16 @@ function Sidebar() {
                     <div><a href="">Test1</a></div>
                 </li>
                 <li>
-                    <div><a href="">Test2</a></div>
+                    <div><a href="#">Test2</a></div>
                 </li>
                 <li>
-                    <div><a href="">Test3</a></div>
+                    <div><a href="#">Test3</a></div>
                 </li>
                 <li>
-                    <div><a href="">Test4</a></div>
+                    <div><a href="#">Test4</a></div>
                 </li>
                 <li>
-                    <div><a href="">Test5</a></div>
+                    <div><a href="#">Test5</a></div>
                 </li>
             </ul>
         </div>
