@@ -4,6 +4,7 @@ import Header from "./components/header/Header";
 import Sidebar from "./components/sidebar/Sidebar";
 import Main from "./components/main/Main.jsx";
 import Footer from "./components/footer/Footer";
+import {features} from "./store/features"
 
 function App() {
   return (
@@ -13,11 +14,11 @@ function App() {
       </header>
 
       <aside className="sidebar">
-        <Sidebar/>
+        <Sidebar features={features}/>
       </aside>
 
       <main className="main">
-        <Main name="Welch W C Lin"/>
+        <Main name="Welch W C Lin" features={features}/>
       </main>
 
       <footer className="footer">

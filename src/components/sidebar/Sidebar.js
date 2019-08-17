@@ -1,25 +1,23 @@
 import React from 'react';
 import './Sidebar.css';
 
-function Sidebar() {
+function Sidebar(props) {
+    // const localFeatures = props.features;
+    // localFeatures.push({
+    //     id: 5,
+    //     name: 'feature 5',
+    //     detail: 'feature 5 detail'
+    // });
+    const listItems = props.features.map((item, index) =>
+        <li key={index}>
+            <div><a href="">{item.name}</a></div>
+        </li>
+    );
+
     return (
         <div className="side">
             <ul className="side--features">
-                <li>
-                    <div><a href="">Test1</a></div>
-                </li>
-                <li>
-                    <div><a href="#">Test2</a></div>
-                </li>
-                <li>
-                    <div><a href="#">Test3</a></div>
-                </li>
-                <li>
-                    <div><a href="#">Test4</a></div>
-                </li>
-                <li>
-                    <div><a href="#">Test5</a></div>
-                </li>
+                {listItems}
             </ul>
         </div>
     );

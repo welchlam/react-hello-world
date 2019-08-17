@@ -1,6 +1,7 @@
 import React from 'react';
 import './Main.css'
 import LoginControl from "./login/LoginControl";
+import Feature from "./feature/Feature";
 
 export default class Main extends React.Component {
     constructor(props) {
@@ -12,16 +13,17 @@ export default class Main extends React.Component {
 
     render() {
         let localeDate = this.state.date.toLocaleTimeString('en');
-        const addUserButton = <button style={{margin: '10px'}}> Add User </button>;
-        const removeUserButton = <button style={{margin: '10px'}}> Remove User </button>;
+        /*const addUserButton = <button style={{margin: '10px'}}> Add User </button>;
+        const removeUserButton = <button style={{margin: '10px'}}> Remove User </button>;*/
         return (
             <div className="main-area">
                 <h1>Hello, {this.props.name}</h1>
                 <h2>It is {localeDate}</h2>
-                <div>{addUserButton}</div>
-                <div>{removeUserButton}</div>
+                {/*<div>{addUserButton}</div>*/}
+                {/*<div>{removeUserButton}</div>*/}
                 <a href="#" onClick={this.handleClick.bind(this, 'welch w c lin')}>User Detail</a>
                 <LoginControl />
+                <Feature features={this.props.features}/>
             </div>
         );
     }
