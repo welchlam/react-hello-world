@@ -1,26 +1,35 @@
 import React from 'react';
+import {connect} from "react-redux";
 import './Sidebar.css';
 
-function Sidebar(props) {
-    // const localFeatures = props.features;
-    // localFeatures.push({
-    //     id: 5,
-    //     name: 'feature 5',
-    //     detail: 'feature 5 detail'
-    // });
-    const listItems = props.features.map((item, index) =>
-        <li key={index}>
-            <div><a href="">{item.name}</a></div>
-        </li>
-    );
+class Sidebar extends React.Component {
+    constructor(props) {
+        super(props)
+    }
 
-    return (
-        <div className="side">
-            <ul className="side--features">
-                {listItems}
-            </ul>
-        </div>
-    );
+    render() {
+        const listItems = this.props.features.map((item, index) =>
+            <li key={index}>
+                <div><a href="">{item.name}</a></div>
+            </li>
+        );
+
+        return (
+            <div className="side">
+                <ul className="side--features">
+                    {listItems}
+                </ul>
+            </div>
+        );
+    }
 }
 
-export default Sidebar;
+const mapStateToProps = state => {
+    const { features } = state;
+    return { features };
+};
+
+export default connect(
+    mapStateToProps,
+    null
+)(Sidebar);

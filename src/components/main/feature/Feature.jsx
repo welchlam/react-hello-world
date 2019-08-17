@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux";
+
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -7,14 +9,13 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
-export default class Feature extends React.Component{
+import {addFeature, removeFeature} from "../../../redux/actions";
+
+class Feature extends React.Component{
     constructor(props) {
         super(props);
-        this.addFeature = this.addFeature.bind(this);
-        this.removeFeature = this.removeFeature.bind(this);
-        this.state = {
-            localFeatures: [...this.props.features]
-        }
+        this.handleAddFeature = this.handleAddFeature.bind(this);
+        this.handleRemoveFeature = this.handleRemoveFeature.bind(this);
     }
 
     render() {
@@ -30,7 +31,7 @@ export default class Feature extends React.Component{
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {this.state.localFeatures.map(feature => (
+                            {this.props.features.map(feature => (
                                 <TableRow key={feature.id}>
                                     <TableCell align="center">{feature.id}</TableCell>
                                     <TableCell align="center">{feature.name}</TableCell>
@@ -40,10 +41,10 @@ export default class Feature extends React.Component{
                         </TableBody>
                     </Table>
                 </Paper>
-                <Button variant="contained" color="primary" style={{margin: '5px'}} onClick={this.addFeature}>
+                <Button variant="contained" color="primary" style={{margin: '5px'}} onClick={this.handleAddFeature}>
                     Add Feature
                 </Button>
-                <Button variant="contained" style={{margin: '5px'}} onClick={this.removeFeature}>
+                <Button variant="contained" style={{margin: '5px'}} onClick={this.handleRemoveFeature}>
                     Remove Feature
                 </Button>
             </div>
@@ -51,24 +52,26 @@ export default class Feature extends React.Component{
         );
     }
 
-    addFeature() {
-        const ids = this.state.localFeatures.map(item => item.id);
+    handleAddFeature() {
+        const ids = this.props.features.map(item => item.id);
         const maxId = Math.max.apply(Math, [...ids, 0]);
         const nextId = maxId + 1;
-        this.setState({
-            localFeatures: [...this.state.localFeatures, {
-                id: nextId,
-                name: 'feature ' + nextId,
-                detail: 'feature ' + nextId + ' detail'
-            }]
-        });
+        this.props.addFeature(nextId);
     }
 
-    removeFeature() {
-        const ids = this.state.localFeatures.map(item => item.id);
+    handleRemoveFeature() {
+        const ids = this.props.features.map(item => item.id);
         const maxId = Math.max.apply(Math, ids);
-        this.setState({
-            localFeatures: [...this.state.localFeatures].filter(item => item.id !== maxId)
-        });
+        this.props.removeFeature(maxId);
     }
 }
+
+const mapStateToProps = state => {
+    const { features } = state;
+    return { features };
+};
+
+export default connect(
+    mapStateToProps,
+    {addFeature, removeFeature}
+)(Feature);

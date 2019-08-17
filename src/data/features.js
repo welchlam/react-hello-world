@@ -1,4 +1,4 @@
-export const features = [{
+const initialState = [{
     id: 1,
     name: 'feature 1',
     detail: 'feature 1 detail'
