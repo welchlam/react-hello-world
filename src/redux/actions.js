@@ -1,4 +1,4 @@
-import { ADD_FEATURE, REMOVE_FEATURE } from "./actionTypes";
+import { ADD_FEATURE, REMOVE_FEATURE } from "./type";
 
 export const addFeature = id => ({
     type: ADD_FEATURE,
