@@ -1,11 +1,12 @@
 import { createStore, applyMiddleware, compose } from "redux";
-import {combineEpics, createEpicMiddleware} from "redux-observable";
+import { combineEpics, createEpicMiddleware } from "redux-observable";
 import rootReducer from "./reducer";
-import {logger} from "./middleware/logger";
-import {addUserEpic} from "./feature/epic";
+import { logger } from "./middleware/logger";
+import { addFeatureEpic, removeFeatureEpic } from "./feature/epic";
 
 const rootEpic = combineEpics(
-    addUserEpic
+    addFeatureEpic,
+    removeFeatureEpic
 );
 
 const epicMiddleware = createEpicMiddleware();
