@@ -1,4 +1,8 @@
-import { createStore } from "redux";
-import rootReducer from "./reduces/index";
+import { createStore, applyMiddleware, compose } from "redux";
+import rootReducer from "./reducer";
+import {logger} from "./middleware/logger";
 
-export default createStore(rootReducer);
+export default createStore(
+    rootReducer,
+    compose(applyMiddleware(logger))
+);

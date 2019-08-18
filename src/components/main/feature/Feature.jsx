@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
-import {addFeature, removeFeature} from "../../../redux/actions";
+import {addFeature, removeFeature} from "../../../redux/feature/actions";
 
 class Feature extends React.Component{
     constructor(props) {
