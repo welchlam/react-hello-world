@@ -37,7 +37,7 @@ export default function(state = initialState, action) {
                 active: true,
                 user: 'user ' + id
             }
-            return [...state, newFeature]
+            return [...state, newFeature];
         }
         case Actions.REMOVE_FEATURE: {
             const {id} = action.payload;
