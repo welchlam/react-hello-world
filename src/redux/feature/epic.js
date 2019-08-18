@@ -1,12 +1,20 @@
 import { Actions as FeatureActions } from './actions';
 import { addUser } from "../user/actions";
-import {delay, filter, mapTo} from 'rxjs/operators';
+import {delay, filter, map, mapTo} from 'rxjs/operators';
 import {ofType} from "redux-observable";
+
+/*export const addUserEpic = action$ => action$.pipe(
+    ofType(FeatureActions.ADD_FEATURE),
+    delay(1000),
+    map((action) => addUser('user ' + action.payload.id))
+);*/
 
 export const addUserEpic = action$ => action$.pipe(
     ofType(FeatureActions.ADD_FEATURE),
-    delay(1000),
-    mapTo(addUser('user A'))
+    map(action => {
+        const {payload: {id}} = action
+        return addUser('user ' + id);
+    })
 );
 
 /*export const addUserEpic = action$ => action$.pipe(
